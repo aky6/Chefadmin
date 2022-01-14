@@ -1,0 +1,172 @@
+<div class="container-fluid">
+  <!-- Card -->
+  <div class="card">
+    <!-- Product Details -->
+    <div class="product-details">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="pd-img-wrapp position-relative mb-5 mb-lg-0 container">
+
+            <img id="img_01" [src]="product.imagePath ? product.imagePath: 'assets/images/img-placeholder.png'"
+              class="img-responsive" data-zoom-image="assets/images/product/product-details-large.jpg" alt="" />
+
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <!-- Product Details Content -->
+          <div class="product-details-content position-relative">
+            <div class="details">
+              <!-- Product Title -->
+              <h4 class="product_title">{{product.itemname}}</h4>
+              <!-- End Product Title -->
+              <div class="approve">
+                <span class="contact-edit" data-toggle="modal" data-target="#contactEditModal">
+                  <a href="javascript:void(0)" (click)="navigateToEdit()"><img src="assets/images/svg/c-edit.svg" alt=""
+                      class="svg"></a>
+                </span>
+                <span class="contact-close">
+                  <a href="javascript:void(0)" (click)="deleteItem(product.itemId)"><img
+                      src="assets/images/svg/c-close.svg" alt="" class="svg"></a>
+                </span>
+              </div>
+            </div>
+            <!--./-->
+            <!-- Product Price -->
+            <p class="price">
+              <span class="woocommerce-Price-amount amount"><span
+                  class="woocommerce-Price-currencySymbol"></span>{{product.price | currency:
+                'INR'}}</span>
+            </p>
+            <!-- End Product Price -->
+
+            <!--Product Type-->
+            <div class="d-flex d-sm-inline-flex align-items-center mr-sm-5 mb-3" *ngIf="product.isVeg === 'Yes'">
+              <!-- Custom Radio -->
+              <div class="custom-radio light success mr-3">
+                <input type="radio" id="veg" checked [value]="product.isVeg" value="Yes">
+                <label for="veg"></label>
+              </div>
+              <!-- End Custom Radio -->
+
+              <label for="radio6">Veg</label>
+            </div>
+
+            <div class="d-flex d-sm-inline-flex align-items-center mr-sm-5 mb-3" *ngIf="product.isVeg === 'No'">
+              <!-- Custom Radio -->
+              <div class="custom-radio light danger mr-3">
+                <input type="radio" id="nveg" checked [value]="product.isVeg" value="No">
+                <label for="nveg"></label>
+              </div>
+              <!-- End Custom Radio -->
+
+              <label for="radio6">Non Veg</label>
+            </div>
+            <!--Product Type Ends-->
+
+            <!--Product Type-->
+            <div class="d-flex d-sm-inline-flex align-items-center mr-sm-5 mb-3" *ngIf="product.inStock === 'No'">
+              <!-- Custom Radio -->
+              <div class="custom-radio light danger mr-3">
+                <input type="radio" id="outOfStock" checked [value]="product.inStock" value="No">
+                <label for="outOfStock"></label>
+              </div>
+              <!-- End Custom Radio -->
+
+              <label for="radio6">Out Of Stock</label>
+            </div>
+
+            <div class="d-flex d-sm-inline-flex align-items-center mr-sm-5 mb-3" *ngIf="product.inStock === 'Yes'">
+              <!-- Custom Radio -->
+              <div class="custom-radio light success mr-3">
+                <input type="radio" id="inStock" checked [value]="product.inStock" value="Yes">
+                <label for="inStock"></label>
+              </div>
+              <!-- End Custom Radio -->
+
+              <label for="radio6">In Stock</label>
+            </div>
+            <!--Product Type Ends-->
+
+            <!-- Product Review -->
+            <div class="product-review d-flex align-items-center">
+              <span class="list-heading bold">Rating</span>
+              <!-- Rating -->
+              <div class="star-rating">
+                <a href="javascript:void(0)"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                <a href="javascript:void(0)"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                <a href="javascript:void(0)"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                <a href="javascript:void(0)"><img src="assets/images/svg/star2.svg" alt="" class="svg"></a>
+                <a href="javascript:void(0)"><img src="assets/images/svg/star2.svg" alt="" class="svg"></a>
+              </div>
+              <!-- End Product Rating -->
+            </div>
+            <!-- End Product Review -->
+            <div class="woocommerce-product-details__short-description">
+              <h5>Category</h5>
+              <p>{{product.category}}</p>
+            </div>
+
+            <div class="woocommerce-product-details__short-description">
+              <h5>Sub Category</h5>
+
+              <ul>
+                <li *ngFor="let cat of subcat">
+                  {{cat}}
+                </li>
+              </ul>
+              <!-- <p>{{subcategories}}</p> -->
+            </div>
+            <div class="woocommerce-product-details__short-description">
+              <h5>Customization</h5>
+
+              <ul>
+                <li *ngFor="let cat of subcat">
+                  {{cat}}
+                </li>
+              </ul>
+              <!-- <p>{{subcategories}}</p> -->
+            </div>
+
+            <!-- Product Description -->
+            <div class="woocommerce-product-details__short-description">
+              <h5>Product Description</h5>
+              <p>{{product.desc}}</p>
+            </div>
+            <!-- End Product Description -->
+
+            <!-- Product Ingredients -->
+            <div class="woocommerce-product-details__short-description">
+              <h5>Product Ingredients</h5>
+              <p>{{product.ingredients}}</p>
+            </div>
+            <!-- End Product Ingredients -->
+
+            <div class="product-time d-flex align-items-center">
+              <h5 class="list-heading bold">Available From</h5>
+              <div *ngIf="product.availabel_from != null">
+                <p>{{product.availabel_from | date: 'shortTime'}}</p>
+              </div>
+              <h5 class="list-next-heading bold" *ngIf="product.availabel_from != null">Till</h5>
+              <div *ngIf="product.availabel_from != null">
+                <p>{{product.availabel_to | date: 'shortTime'}}</p>
+              </div>
+            </div>
+
+
+            <div class="product-time d-flex align-items-center">
+
+            </div>
+
+            <br>
+            <br>
+
+          </div>
+          <!-- End Product Details Content -->
+        </div>
+      </div>
+    </div>
+    <!-- End Product Details -->
+  </div>
+  <!-- End Card -->
+</div>

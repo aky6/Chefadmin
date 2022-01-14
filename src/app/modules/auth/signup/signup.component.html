@@ -1,0 +1,167 @@
+<div class="mn-vh-100 d-flex align-items-center">
+    <div class="container">
+        <!-- Card -->
+        <div class="card justify-content-center auth-card">
+            <div class="row justify-content-center">
+                <div class="col-xl-10">
+                    <h4 class="mb-5 font-20">Welcome To Homemade</h4>
+
+                    <form id="signUpForm" name="signUpForm" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="f_name" class="mb-2 font-14 bold black">Full Name</label>
+                                    <input type="text" id="f_name" class="theme-input-style" placeholder="First Name"
+                                        formControlName="firstName">
+                                    <p *ngIf="formControl.firstName!.errors?.required  && formControl.firstName!.touched"
+                                        class="error-msg">Please enter your first name!!</p>
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="email" class="mb-2 font-14 bold black">Email Address</label>
+                                    <input type="email" id="email" class="theme-input-style" placeholder="Email Address"
+                                        formControlName="email">
+                                    <p *ngIf="formControl.email!.errors  && formControl.email!.touched"
+                                        class="error-msg">Please enter valid email!!</p>
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="password" class="mb-2 font-14 bold black">Password</label>
+                                    <input type="password" id="password" class="theme-input-style"
+                                        placeholder="Password" formControlName="password">
+                                    <p *ngIf="formControl.password!.errors?.required  && formControl.password!.touched"
+                                        class="error-msg">Please enter your password!!</p>
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="r_password" class="mb-2 font-14 bold black">Retype Password</label>
+                                    <input type="password" id="r_password" class="theme-input-style"
+                                        placeholder="Password" formControlName="confirmPassword">
+                                    <p *ngIf="formControl.confirmPassword!.errors?.required  && formControl.confirmPassword!.touched"
+                                        class="error-msg">Please confirm your password!!</p>
+                                    <p *ngIf="formControl.confirmPassword!.errors?.incorrect  && formControl.confirmPassword!.touched"
+                                        class="error-msg">Password doesn't match!!</p>
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="email" class="mb-2 font-14 bold black">Mobile Number</label>
+                                    <input type="email" id="email" class="theme-input-style" placeholder="Mobile Number"
+                                        formControlName="mobileNumber">
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="flatAddress" class="mb-2 font-14 bold black">Flat Address</label>
+                                    <input type="text" id="flatAddress" class="theme-input-style" #flatAddress
+                                        placeholder="Enter Door/Flat No, Block etc..." formControlName="flatAddress">
+                                    <p *ngIf="formControl.flatAddress.errors && formControl.flatAddress.errors.required"
+                                        class="error-msg">Flat Address is mandatory</p>
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="email" class="mb-2 font-14 bold black">Address</label>
+                                    <input type="text" id="email" class="theme-input-style" #deliveryLocation
+                                        placeholder="Enter street name, area etc..." formControlName="address">
+                                    <p *ngIf="formControl.address.errors && formControl.address.errors.required"
+                                        class="error-msg">Location is mandatory</p>
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="email" class="mb-2 font-14 bold black">City</label>
+                                    <input type="email" id="email" class="theme-input-style" placeholder="City"
+                                        formControlName="city">
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="email" class="mb-2 font-14 bold black">State</label>
+                                    <select class="theme-input-style" id="exampleSelect1" formControlName="state">
+                                        <option [value]="state" *ngFor="let state of allStates">{{state}}</option>
+                                    </select>
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="email" class="mb-2 font-14 bold black">Zip</label>
+                                    <input type="email" id="email" class="theme-input-style" placeholder="Zip Code"
+                                        formControlName="zip">
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20">
+                                    <label for="desc" class="mb-2 font-14 bold black">Bio</label>
+                                    <input type="test" id="desc" class="theme-input-style" placeholder="Bio"
+                                        formControlName="desc">
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Form Group -->
+                                <div class="form-group mb-20 changeLocation">
+                                    <span><a href="javascript:void(0)" title="Change Location"
+                                            (click)="getCurrentLocation()">Get current
+                                            location</a></span>
+                                </div>
+                                <!-- End Form Group -->
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center pt-4">
+                            <button type="submit" class="btn long mr-20">Register</button>
+                            <span class="font-12 d-block"><a href="javascript:void(0)" class="bold"
+                                    routerLink="/auth">Log In</a>,If you already
+                                have an account.</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Card -->
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="footer style--two">
+    Dashmin © 2020 created by <a href="https://www.themelooks.com/"> ThemeLooks</a>
+</footer>
+<!-- End Footer -->

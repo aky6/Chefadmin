@@ -1,0 +1,92 @@
+/* You can add global styles to this file, and also import other style files */
+@import "material-icons/iconfont/material-icons.scss";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "scss/variables";
+@import "./assets/sass/style.scss";
+@import "~ngx-toastr/toastr.css";
+@import "~@icon/icofont/icofont.css";
+@import "scss/custom";
+
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url(assets/fonts/MaterialIcons-Regular.ttf) format("truetype"),
+    url(assets/fonts/MaterialIconsOutlined-Regular.otf) format("opentype");
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+.error-msg {
+  color: #eb555c; //#cc0033
+  // font-weight: bold;
+  line-height: 10px;
+  font-size: 14px;
+  position: relative;
+  padding: 7px 11px 4px;
+  margin-bottom: 4px;
+} // .error-tip
+
+#toast-container > div {
+  opacity: 1;
+}
+
+.mat-tab-body-content {
+  overflow: hidden !important;
+}
+
+@import "~@angular/material/theming";
+@include mat-core();
+
+$md-homemade: (
+  50: #ece9fc,
+  100: #cfc7f6,
+  200: #b0a2f1,
+  300: #907deb,
+  400: #7861e6,
+  500: #6045e2,
+  600: #583edf,
+  700: #4e36da,
+  800: #442ed6,
+  900: #331fcf,
+  A100: #ffffff,
+  A200: #d7d3ff,
+  A400: #a9a0ff,
+  A700: #9286ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$primary: mat-palette($md-homemade);
+$accent: mat-palette($mat-pink, 200);
+
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);

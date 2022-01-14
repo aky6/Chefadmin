@@ -1,0 +1,353 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <!-- Card -->
+            <div class="card bg-transparent">
+                <div class="card-body bg-white mb-30">
+                    <!-- Invoice Header -->
+                    <div class="invoice-header d-flex align-items-sm-center media flex-column flex-sm-row">
+                        <div class="invoice-header-left d-flex align-items-center position-relative">
+                            <div class="">
+                                <a href="javascript:void(0)" routerLink="/invoice/new" class="btn-circle">
+                                    <img src="assets/images/svg/plus_white.svg" alt="" class="svg">
+                                </a>
+                            </div>
+
+                            <!-- Send Messages -->
+                            <div class="send-message">
+                                <a href="#"><img src="assets/images/svg/send_c3.svg" alt="" class="svg"></a>
+                            </div>
+                            <!-- End Send Messages -->
+
+                            <!-- Starred -->
+                            <div class="star">
+                                <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                            </div>
+                            <!-- End Starred -->
+
+                            <!-- Delete Mail -->
+                            <div class="delete_mail">
+                                <a href="#"><img src="assets/images/svg/delete.svg" alt="" class="svg"></a>
+                            </div>
+                            <!-- End Delete Mail -->
+
+                            <!-- Dropdown Button -->
+                            <div class="dropdown-button">
+                                <a href="#" class="d-flex align-items-center" data-toggle="dropdown">Monthly <i
+                                        class="icofont-rounded-down"></i></a>
+                                <div class="dropdown-menu">
+                                    <a href="#">Daily</a>
+                                    <a href="#">Sort By</a>
+                                    <a href="#">Monthly</a>
+                                </div>
+                            </div>
+                            <!-- End Dropdown Button -->
+                        </div>
+
+                        <div
+                            class="invoice-header-right d-flex align-items-center justify-content-end media-body mt-3 mt-sm-0">
+                            <!-- Search Form -->
+                            <form action="#" class="search-form">
+                                <div class="theme-input-group">
+                                    <input type="text" class="theme-input-style" placeholder="Search Here">
+
+                                    <button type="submit"><img src="assets/images/svg/search-icon.svg" alt=""
+                                            class="svg"></button>
+                                </div>
+                            </form>
+                            <!-- End Search Form -->
+
+                            <!-- Pagination -->
+                            <div class="pagination style--two d-flex flex-column align-items-center ml-3">
+                                <ul class="list-inline d-inline-flex align-items-center">
+                                    <li><a href="#">
+                                            <img src="assets/images/svg/left-angle.svg" alt="" class="svg">
+                                        </a></li>
+                                    <li><a href="#" class="current">
+                                            <img src="assets/images/svg/right-angle.svg" alt="" class="svg">
+                                        </a></li>
+                                </ul>
+                            </div>
+                            <!-- End Pagination -->
+                        </div>
+                    </div>
+                    <!-- End Invoice Header -->
+                </div>
+
+                <div class="table-responsive">
+                    <!-- Invoice List Table -->
+                    <table class="invoice-list-table text-nowrap bg-white">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </th>
+                                <th>Amount <img src="assets/images/svg/table-down-arrow.svg" alt="" class="svg"></th>
+                                <th>Date <img src="assets/images/svg/table-down-arrow.svg" alt="" class="svg"></th>
+                                <th>Customer <img src="assets/images/svg/table-up-arrow.svg" alt="" class="svg"></th>
+                                <th>Tag <img src="assets/images/svg/table-down-arrow.svg" alt="" class="svg"></th>
+                                <th>Status <img src="assets/images/svg/table-down-arrow.svg" alt="" class="svg"></th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </td>
+                                <td>$658</td>
+                                <td>July 14 2019</td>
+                                <td>Prudence Kirlin</td>
+                                <td>Customer Mobility Facilitator</td>
+                                <td><button type="button" class="status-btn un_paid">Unpaid</button></td>
+                                <td><a href="javascript:void(0)" routerLink="/invoice/detail/1"
+                                        class="details-btn">Details <i class="icofont-arrow-right"></i></a></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </td>
+                                <td>$76</td>
+                                <td>November 11, 2018</td>
+                                <td>Hester Blanda</td>
+                                <td>Future Identity Orchestrator</td>
+                                <td><button type="button" class="status-btn on_hold">On Hold</button></td>
+                                <td><a href="javascript:void(0)" routerLink="/invoice/detail/1"
+                                        class="details-btn">Details <i class="icofont-arrow-right"></i></a></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </td>
+                                <td>$598</td>
+                                <td>September 7, 2016</td>
+                                <td>Zena Strosin</td>
+                                <td>Chief Creative Coordinator</td>
+                                <td><button type="button" class="status-btn paid">Paid</button></td>
+                                <td><a href="javascript:void(0)" routerLink="/invoice/detail/1"
+                                        class="details-btn">Details <i class="icofont-arrow-right"></i></a></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </td>
+                                <td>$76</td>
+                                <td>September 14, 2017</td>
+                                <td>Kay Daniel</td>
+                                <td>Investor Markets Assistant</td>
+                                <td><button type="button" class="status-btn completed">Completed</button></td>
+                                <td><a href="javascript:void(0)" routerLink="/invoice/detail/1"
+                                        class="details-btn">Details <i class="icofont-arrow-right"></i></a></td>
+                            </tr>
+
+                            <tr class="selected">
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </td>
+                                <td>$365</td>
+                                <td>January 30, 2016</td>
+                                <td>Miss Colton Cartwright</td>
+                                <td>Principal Data Designer</td>
+                                <td><button type="button" class="status-btn draft">Draft</button></td>
+                                <td><a href="javascript:void(0)" routerLink="/invoice/detail/1"
+                                        class="details-btn">Details <i class="icofont-arrow-right"></i></a></td>
+                            </tr>
+
+                            <tr class="selected">
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </td>
+                                <td>$398</td>
+                                <td>January 30, 2016</td>
+                                <td>Dayana Franecki</td>
+                                <td>Future Tactics Manager</td>
+                                <td><button type="button" class="status-btn paid">Paid</button></td>
+                                <td><a href="javascript:void(0)" routerLink="/invoice/detail/1"
+                                        class="details-btn">Details <i class="icofont-arrow-right"></i></a></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </td>
+                                <td>$45</td>
+                                <td>February 15, 2017</td>
+                                <td>Oceane Nader</td>
+                                <td>Senior Mobility Director</td>
+                                <td><button type="button" class="status-btn paid">Paid</button></td>
+                                <td><a href="javascript:void(0)" routerLink="/invoice/detail/1"
+                                        class="details-btn">Details <i class="icofont-arrow-right"></i></a></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </td>
+                                <td>$634</td>
+                                <td>May 20, 2018</td>
+                                <td>Chad Oberbrunner</td>
+                                <td>Future Integration Manager</td>
+                                <td><button type="button" class="status-btn paid">Paid</button></td>
+                                <td><a href="javascript:void(0)" routerLink="/invoice/detail/1"
+                                        class="details-btn">Details <i class="icofont-arrow-right"></i></a></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </td>
+                                <td>$458</td>
+                                <td>November 8, 2018</td>
+                                <td>Kassandra Schroeder</td>
+                                <td>Global Marketing Supervisor</td>
+                                <td><button type="button" class="status-btn paid">Paid</button></td>
+                                <td><a href="javascript:void(0)" routerLink="/invoice/detail/1"
+                                        class="details-btn">Details <i class="icofont-arrow-right"></i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+
+                                    <!-- Star -->
+                                    <div class="star">
+                                        <a href="#"><img src="assets/images/svg/star.svg" alt="" class="svg"></a>
+                                    </div>
+                                    <!-- End Star -->
+                                </td>
+                                <td>$1658</td>
+                                <td>April 8, 2019</td>
+                                <td>Lucinda Hills</td>
+                                <td>Regional Branding Representative</td>
+                                <td><button type="button" class="status-btn paid">Paid</button></td>
+                                <td><a href="javascript:void(0)" routerLink="/invoice/detail/1"
+                                        class="details-btn">Details <i class="icofont-arrow-right"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- End Invoice List Table -->
+                </div>
+            </div>
+            <!-- End Card -->
+        </div>
+    </div>
+</div>

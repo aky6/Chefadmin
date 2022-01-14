@@ -1,0 +1,20 @@
+
+<div class="order" id="modal-dialog">
+    <div class="small-dialog-header">
+        <h3 md-dialog-title>Confirm</h3>
+    </div>
+    <div class="content">
+        <div md-dialog-content>{{confirmMessage}}</div>
+    </div>
+    <div class="footer">
+        <div class="row small-gutters" md-dialog-actions>
+            <div class="col-md-6">
+                <a href="javascript:void(0)" (click)="dialogRef.close(true)" class="btn_1 gradient full-width">Confirm</a>
+            </div>
+            <div class="col-md-6">
+                <a href="javascript:void(0)" (click)="dialogRef.close(false)" class="btn_1 gradient full-width">Cancel</a>
+            </div>  
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,262 @@
+<!-- Offcanval Overlay -->
+<div class="offcanvas-overlay"></div>
+<!-- Offcanval Overlay -->
+
+<!-- Wrapper -->
+<div class="wrapper">
+    <!-- Header -->
+    <header class="header white-bg fixed-top d-flex align-content-center flex-wrap" *ngIf="user">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="javascript:void(0)" class="default-logo" routerLink="/home"><img
+                    src="assets/images/byHomeChefs.png" alt=""></a>
+            <a href="javascript:void(0)" class="mobile-logo" routerLink="/home"><img
+                    src="assets/images/byhomechefs-Logo New 1.png" alt=""></a>
+        </div>
+        <!-- End Logo -->
+
+        <!-- Main Header -->
+        <div class="main-header">
+            <div class="container-fluid">
+                <div class="row justify-content-between">
+                    <div class="col-6 col-lg-1 col-xl-4">
+                        <!-- Header Left -->
+                        <div class="main-header-left h-100 d-flex align-items-center">
+                            <!-- Main Header User -->
+                            <div class="main-header-user">
+                                <a href="#" class="d-flex align-items-center" data-toggle="dropdown">
+                                    <div class="menu-icon">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+
+                                    <div class="user-profile d-xl-flex align-items-center d-none">
+                                        <!-- User Avatar -->
+                                        <div class="user-avatar">
+                                            <div class="user-avatar__img" [ngStyle]="{
+                                                'background-image': profile && profile.imagePath ? 'url(' + profile.imagePath + ')' : 'url(assets/images/avatar/user.png)'
+                                            }">
+                                                &nbsp;</div>
+                                        </div>
+                                        <!-- End User Avatar -->
+
+                                        <!-- User Info -->
+                                        <div class="user-info">
+                                            <h4 class="user-name">{{userName | titlecase}}</h4>
+                                            <p class="user-email">{{userEmail}}</p>
+                                        </div>
+                                        <!-- End User Info -->
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div
+                                        class="d-flex align-items-center justify-content-between dropdown-availability">
+                                        <label class="black bold">Available</label>
+                                        <div>
+                                            <!-- Switch -->
+                                            <label class="switch outline success ml-3">
+                                                <input type="checkbox" checked="checked" [(ngModel)]="available"
+                                                    (change)="updateAvailability()">
+                                                <span class="control"></span>
+                                            </label>
+                                            <!-- End Switch -->
+                                        </div>
+                                    </div>
+                                    <a href="javascript:void(0)" (click)="navUserDetail()">My Profile</a>
+                                    <a href="javascript:void(0)" (click)="logOut()">Log Out</a>
+                                </div>
+                            </div>
+                            <!-- End Main Header User -->
+
+                            <!-- Main Header Menu -->
+                            <div class="main-header-menu d-block d-lg-none">
+                                <div class="header-toogle-menu">
+                                    <!-- <i class="icofont-navigation-menu"></i> -->
+                                    <img src="assets/images/menu.png" alt="">
+                                </div>
+                            </div>
+                            <!-- End Main Header Menu -->
+                        </div>
+                        <!-- End Header Left -->
+                    </div>
+                    <div class="col-6 col-lg-11 col-xl-8">
+                        <!-- Header Right -->
+                        <div class="main-header-right d-flex justify-content-end">
+                            <ul class="nav">
+                                <li>
+                                    <!-- Main Header Notification -->
+                                    <div class="main-header-notification">
+                                        <a href="javascript:void(0)" class="header-icon notification-icon"
+                                            data-toggle="dropdown">
+                                            <span class="count"
+                                                style="background-image: url(assets/images/count-bg.png);">2</span>
+                                            <img src="assets/images/svg/notification-icon.svg" alt="" class="svg">
+                                        </a>
+                                        <div class="dropdown-menu style--two dropdown-menu-right">
+                                            <!-- Dropdown Header -->
+                                            <div
+                                                class="dropdown-header d-flex align-items-center justify-content-between">
+                                                <h5>5 New notifications</h5>
+                                                <a href="#" class="text-mute d-inline-block">Clear all</a>
+                                            </div>
+                                            <!-- End Dropdown Header -->
+
+                                            <!-- Dropdown Body -->
+                                            <div class="dropdown-body">
+
+                                                <!-- Item Single -->
+                                                <a href="#" class="item-single d-flex align-items-center">
+                                                    <div class="content">
+                                                        <div class="mb-2">
+                                                            <p class="time">2 min ago</p>
+                                                        </div>
+                                                        <p class="main-text">Donec dapibus mauris id odio ornare tempus.
+                                                            Duis sit
+                                                            amet accumsan justo.</p>
+                                                    </div>
+                                                </a>
+                                                <!-- End Item Single -->
+
+                                                <!-- Item Single -->
+                                                <a href="#" class="item-single d-flex align-items-center">
+                                                    <div class="content">
+                                                        <div class="mb-2">
+                                                            <p class="time">2 min ago</p>
+                                                        </div>
+                                                        <p class="main-text">Donec dapibus mauris id odio ornare tempus.
+                                                            Duis sit
+                                                            amet accumsan justo.</p>
+                                                    </div>
+                                                </a>
+                                                <!-- End Item Single -->
+                                            </div>
+                                            <!-- End Dropdown Body -->
+                                        </div>
+                                    </div>
+                                    <!-- End Main Header Notification -->
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Header Right -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Main Header -->
+    </header>
+    <!-- End Header -->
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar" data-trigger="scrollbar" *ngIf="user">
+            <!-- Sidebar Header -->
+            <div class="sidebar-header d-none d-lg-block">
+                <!-- Sidebar Toggle Pin Button -->
+                <div class="sidebar-toogle-pin">
+                    <i class="icofont icofont-tack-pin"></i>
+                </div>
+                <!-- End Sidebar Toggle Pin Button -->
+            </div>
+            <!-- End Sidebar Header -->
+
+            <!-- Sidebar Body -->
+            <div class="sidebar-body">
+                <!-- Nav -->
+                <ul class="nav">
+                    <li [ngClass]="{'active': currentComponent === 'dashboard'}">
+                        <a href="javascript:void(0)" (click)="navigateToDashboard()">
+                            <i class="icofont icofont-pie-chart"></i>
+                            <span class="link-title">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li [ngClass]="{'active': currentComponent === 'customer'}" *ngIf="!isVendor">
+                        <a href="javascript:void(0)">
+                            <i class="icofont icofont-users-alt-5"></i>
+                            <span class="link-title">Customers</span>
+                        </a>
+
+                        <!-- Sub Menu -->
+                        <ul class="nav sub-menu">
+                            <li><a href="javascript:void(0)" routerLink="/customer">Customers List</a></li>
+                            <li><a href="javascript:void(0)" routerLink="/customer/detail">Customers Detail</a></li>
+                        </ul>
+                        <!-- End Sub Menu -->
+                    </li>
+                    <!--./-->
+
+                    <li [ngClass]="{'active': currentComponent === 'vendor'}" *ngIf="!isVendor">
+                        <a href="#">
+                            <i class="icofont icofont-hotel-boy-alt"></i>
+                            <span class="link-title">Vendors</span>
+                        </a>
+
+                        <!-- Sub Menu -->
+                        <ul class="nav sub-menu">
+                            <li><a href="javascript:void(0)" routerLink="/vendor">Vendors List</a></li>
+                            <li><a href="javascript:void(0)" routerLink="/vendor/detail/1">Vendors Detail</a></li>
+                        </ul>
+                        <!-- End Sub Menu -->
+                    </li>
+                    <!--./-->
+
+                    <!--./-->
+                    <li [ngClass]="{'active': currentComponent === 'invoice'}" *ngIf="!isVendor">
+                        <a href="#">
+                            <i class="icofont icofont-list"></i>
+                            <span class="link-title">Invoices</span>
+                        </a>
+
+                        <!-- Sub Menu -->
+                        <ul class="nav sub-menu">
+                            <li><a href="javascript:void(0)" routerLink="/invoice">Invoice List</a></li>
+                            <li><a href="javascript:void(0)" routerLink="/invoice/detail">Invoice Detail</a></li>
+                        </ul>
+                        <!-- End Sub Menu -->
+                    </li>
+                    <!--./-->
+
+                    <li [ngClass]="{'active': currentComponent === 'menu'}" *ngIf="isVendor">
+                        <a href="javascript:void(0)" routerLink="/vendor-menu">
+                            <i class="icofont icofont-food-basket"></i>
+                            <span class="link-title">Menu</span>
+                        </a>
+                    </li>
+                    <!--./-->
+
+                    <li [ngClass]="{'active': currentComponent === 'add-product'}" *ngIf="isVendor">
+                        <a href="javascript:void(0)" routerLink="/add-product">
+                            <i class="icofont icofont-plus-square"></i>
+                            <span class="link-title">Add Product</span>
+                        </a>
+                    </li>
+                    <!--./-->
+
+                    <li [ngClass]="{'active': currentComponent === 'order'}">
+                        <a href="javascript:void(0)" routerLink="/vendor/menu">
+                            <i class="icofont icofont-restaurant"></i>
+                            <span class="link-title">Orders</span>
+                        </a>
+                    </li>
+                    <!--./-->
+                </ul>
+                <!-- End Nav -->
+            </div>
+            <!-- End Sidebar Body -->
+        </nav>
+        <!-- End Sidebar -->
+
+        <!-- Main Content -->
+        <div class="main-content" [ngClass]="{'main-content__loggedout': !user}">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" *ngIf="user">
+        All © Reserved. 2022 <a href="#"> byHomeChef</a>
+    </footer>
+    <!-- End Footer -->
+</div>

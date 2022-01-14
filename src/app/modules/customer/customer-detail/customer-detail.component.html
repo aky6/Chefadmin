@@ -1,0 +1,668 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <!-- User Profile Image -->
+                <div class="user-profile-img">
+                    <div class="cover-img">
+                        <img [src]="'assets/images/coverImageChef.jpg'" class="w-100" alt="">
+
+                        <!-- Upload Photo -->
+                        <div class="upload-button">
+                            <img [src]="'assets/images/svg/gallery.svg'" alt="" class="svg mr-2">
+                            <span>Upload Photo</span>
+                            <input class="file-input" type="file" id="fileUpload3" accept="image/*">
+                        </div>
+                        <!-- End Upload Photo -->
+                    </div>
+                </div>
+                <!-- End User Profile Image -->
+            </div>
+
+            <div class="mx-2 mx-lg-4 mx-xl-5">
+                <div class="card mt-1">
+                    <!-- User Profile Nav -->
+                    <div
+                        class="user-profile-nav d-flex justify-content-xl-between align-items-xl-center flex-column flex-xl-row">
+                        <!-- Profile Info -->
+                        <div class="profile-info d-flex align-items-center">
+                            <div class="profile-pic mr-3">
+                                <img [src]="userDetail && userDetail.imagePath ? userDetail.imagePath : 'assets/images/media/profile-pic.jpg'" alt="">
+
+                                <!-- Upload Photo -->
+                                <div class="upload-button">
+                                    <img [src]="userDetail && userDetail.imagePath ? userDetail.imagePath : 'assets/images/svg/gallery.svg'" alt="" class="svg mr-2">
+                                    <span>Upload Photo</span>
+                                    <input class="file-input" type="file" accept="image/*" #imageInputOne (change)="updateProfile(imageInputOne)">
+                                </div>
+                                <!-- End Upload Photo -->
+                            </div>
+
+                            <div>
+                                <h3>{{userDetail.name}}</h3>
+                                <p class="font-14">{{userDetail.roles}}</p>
+                            </div>
+                        </div>
+                        <!-- End Profile Info -->
+
+                        <div class="d-flex align-items-center mt-3 mt-xl-0">
+                            <ul class="nav profile-nav-tabs">
+                                <li>
+                                    <a class="p_nav-link has-before active" href="javascript:void(0)"
+                                        (click)="toggleAbout()" [ngClass]="{'active': displayAbout}">About</a>
+                                </li>
+                                <!-- <li>
+                                    <a class="p_nav-link" href="javascript:void(0)" (click)="toggleMenu()"
+                                        [ngClass]="{'active': displayMenu}">Menu</a>
+                                </li> -->
+                                <li>
+                                    <a class="p_nav-link" href="javascript:void(0)" (click)="toggleHistory()"
+                                        [ngClass]="{'active': displayHistory}">Order
+                                        History</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End User Profile Nav -->
+                </div>
+
+                <div class="mt-30" *ngIf="displayAbout">
+                    <!-- Profile Completion -->
+                    <div class="profile-completion d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <!-- Progress -->
+                            <div class="progress_22 mr-3">
+                                <div class="ProgressBar-wrap2 position-relative">
+                                    <div class="ProgressBar ProgressBar_22" data-progress="86">
+                                        <svg class="ProgressBar-contentCircle" viewBox="0 0 200 200">
+                                            <!-- on rotation circle -->
+                                            <circle transform="rotate(-90, 100, 100)" class="ProgressBar-background"
+                                                cx="100" cy="100" r="85" />
+                                            <circle transform="rotate(-90, 100, 100)" class="ProgressBar-circle"
+                                                cx="100" cy="100" r="85" />
+                                        </svg>
+
+                                        <span class="ProgressBar-percentage ProgressBar-percentage--count"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Progress -->
+
+                            <div class="">
+                                <h4 class="c2 mb-1">Profile Completion</h4>
+                                <p class="font-14">The customer profile details are incomplete.</p>
+                            </div>
+                        </div>
+
+                        <!-- Edit Profile Button -->
+                        <div class="edit-profile-btn pr-1">
+                            <a class="btn-circle" data-toggle="modal" data-target="#contactEditModal" (click)="updateProfileFormData()">
+                                <img src="assets/images/svg/writing.svg" alt="" class="svg">
+                            </a>
+                        </div>
+                        <!-- End Edit Profile Button -->
+                    </div>
+                    <!-- End Profile Completion -->
+
+                    <!-- Card -->
+                    <div class="card">
+                        <div class="p-30">
+                            <div class="about-myself mt-2 pb-2">
+                                <h4 class="mb-3">About {{userDetail.name}}</h4>
+                                <p>{{userDetail.desc}}</p>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!-- Personal Info -->
+                                    <div class="personal-info"><br>
+                                        <h4 class="mb-3">Personal Information</h4>
+
+                                        <ul class="info-list list-unstyled">
+                                            <li><span>Name</span>{{userDetail.name}}</li>
+                                            <li><span>Role</span> {{userDetail.roles}}</li>
+                                            <li><span>Eamil</span> {{userDetail.email}}</li>
+                                            <li><span>Mobile</span> {{userDetail.mobilenumber}}</li>
+                                            <li><span>Address</span> {{userDetail.address}}</li>
+                                            <li><span>City</span> {{userDetail.city}}</li>
+                                            <li><span>State</span> {{userDetail.state}}</li>
+                                            <li><span>Pincode</span> {{userDetail.pincode}}</li>
+                                        </ul>
+                                    </div>
+                                    <!-- End Personal Info -->
+                                </div>
+                                <!--./-->
+                                <div class="col-md-6">
+                                    <div class="mapBox">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14020.648126966336!2d77.20097492358285!3d28.534849070538584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce21e7d306d03%3A0x94b8ccb323d7648!2sMalviya%20Nagar%2C%20New%20Delhi%2C%20Delhi%20110017!5e0!3m2!1sen!2sin!4v1611156106802!5m2!1sen!2sin"
+                                            width="100%" height="350" frameborder="0" style="border:0;"
+                                            allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                    </div>
+                                </div>
+                                <!--./-->
+                            </div>
+                            <!--row-->
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+
+                <div class="mt-30" *ngIf="displayHistory">
+                    <!-- Profile Completion -->
+                    <!-- <div class="profile-completion d-flex align-items-center justify-content-between"> -->
+                    <!-- <div class="d-flex align-items-center">
+
+                            <div class="">
+                                <h4 class="c2 mb-1">Menu</h4>
+                                <p class="font-14">Total Items: 50</p>
+                            </div>
+                        </div> -->
+
+                    <!-- Edit Profile Button -->
+                    <!-- <div class="main-header-btn ml-md-1 btn-type1">
+                            <a href="#" class="btn">Add Item</a>
+                        </div> -->
+                    <!-- End Edit Profile Button -->
+                    <!-- </div> -->
+                    <!-- End Profile Completion -->
+
+                    <!-- Card -->
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- <h4 class="pt-2 mb-4">Order List</h4> -->
+                            <!--Order Grid-->
+                            <div class="example-container">
+                                <table mat-table [dataSource]="dataSource" matSort>
+
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="orderID">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                            <h6>Order ID</h6>
+                                        </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.orderID}} </td>
+                                    </ng-container>
+
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="date">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                            <h6>Date</h6>
+                                        </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.date | date: 'medium'}} </td>
+                                    </ng-container>
+
+                                    <!-- Weight Column -->
+                                    <ng-container matColumnDef="products">
+                                        <th mat-header-cell *matHeaderCellDef>
+                                            <h6>Products</h6>
+                                        </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.products}} </td>
+                                    </ng-container>
+
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="buyerName">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                            <h6>Buyer Name</h6>
+                                        </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.buyerName | titlecase}} </td>
+                                    </ng-container>
+
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="status">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                            <h6>Status</h6>
+                                        </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                                    </ng-container>
+
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="price">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                            <h6>Price</h6>
+                                        </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.price | currency: 'INR'}}
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="shippingCost">
+                                        <th mat-header-cell *matHeaderCellDef>
+                                            <h6>Shipping Cost</h6>
+                                        </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.shippingCost | currency:
+                                            'INR'}}
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="totalCost">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                            <h6>Total Cost</h6>
+                                        </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.totalCost | currency: 'INR'}}
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Symbol Column -->
+                                    <!-- <ng-container matColumnDef="action">
+                                                                                <th mat-header-cell *matHeaderCellDef>
+                                                                                    <h6>Action</h6>
+                                                                                </th>
+                                                                                <td mat-cell *matCellDef="let element">
+                                                                                    <div class="action-btns">
+                                                                                        <button mat-mini-fab color="primary"
+                                                                                            (click)="updateOrderStaus('AcceptedByChef', element.orderID)">
+                                                                                            <mat-icon>done</mat-icon>
+                                                                                        </button>
+                                            
+                                                                                        <button mat-mini-fab color="warn"
+                                                                                            (click)="updateOrderStaus('RejectedBychef ', element.orderID)">
+                                                                                            <mat-icon>close</mat-icon>
+                                                                                        </button>
+                                            
+                                                                                        <button mat-mini-fab color="success"
+                                                                                            (click)="updateOrderStaus('cookingcompleted', element.orderID)">
+                                                                                            <mat-icon>restaurant_menu</mat-icon>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </ng-container> -->
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                            </div>
+                            <!--Order Grid End-->
+                            <!-- Product Grid -->
+                            <div class="product-grid pt-2">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <!-- Pagination -->
+                                        <div class="pagination d-flex flex-column align-items-center mb-10">
+                                            <ul class="list-inline d-inline-flex align-items-center mb-2">
+                                                <li><a href="#" (click)="loadPrevPage()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="6.412"
+                                                            height="10.828" viewBox="0 0 6.412 10.828"
+                                                            class="svg replaced-svg">
+                                                            <path id="left-angle" d="M-22247.133-18561.5l-4,4,4,4"
+                                                                transform="translate(22252.131 18562.914)" fill="none"
+                                                                stroke="#8280fd" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"></path>
+                                                            <!-- Code injected by live-server -->
+                                                            <script type="text/javascript">
+                                                                // <![CDATA[  <-- For SVG support
+                                                                if ('WebSocket' in window) {
+                                                                    (function () {
+                                                                        function refreshCSS() {
+                                                                            var sheets = [].slice.call(document.getElementsByTagName("link"));
+                                                                            var head = document.getElementsByTagName("head")[0];
+                                                                            for (var i = 0; i < sheets.length; ++i) {
+                                                                                var elem = sheets[i];
+                                                                                var parent = elem.parentElement || head;
+                                                                                parent.removeChild(elem);
+                                                                                var rel = elem.rel;
+                                                                                if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                                                                                    var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                                                                                    elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                                                                                }
+                                                                                parent.appendChild(elem);
+                                                                            }
+                                                                        }
+                                                                        var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                                                                        var address = protocol + window.location.host + window.location.pathname + '/ws';
+                                                                        var socket = new WebSocket(address);
+                                                                        socket.onmessage = function (msg) {
+                                                                            if (msg.data == 'reload') window.location.reload();
+                                                                            else if (msg.data == 'refreshcss') refreshCSS();
+                                                                        };
+                                                                        if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                                                                           // console.log('Live reload enabled.');
+                                                                            sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                                                                        }
+                                                                    })();
+                                                                }
+                                                                else {
+                                                                    console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+                                                                }
+         // ]]>
+                                                            </script>
+                                                        </svg>
+                                                    </a></li>
+                                                <li class="current"><span class="current">{{OrderPageDetail.currPageNo}}</span></li>
+                                                <li><a href="#" (click)="loadNextPage()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="6.414"
+                                                            height="10.828" viewBox="0 0 6.414 10.828"
+                                                            class="svg replaced-svg">
+                                                            <path id="right-angle" d="M-22245.137-18561.5l4,4-4,4"
+                                                                transform="translate(22246.551 18562.914)" fill="none"
+                                                                stroke="#8280fd" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"></path>
+                                                            <!-- Code injected by live-server -->
+                                                            <script type="text/javascript">
+                                                                // <![CDATA[  <-- For SVG support
+                                                                if ('WebSocket' in window) {
+                                                                    (function () {
+                                                                        function refreshCSS() {
+                                                                            var sheets = [].slice.call(document.getElementsByTagName("link"));
+                                                                            var head = document.getElementsByTagName("head")[0];
+                                                                            for (var i = 0; i < sheets.length; ++i) {
+                                                                                var elem = sheets[i];
+                                                                                var parent = elem.parentElement || head;
+                                                                                parent.removeChild(elem);
+                                                                                var rel = elem.rel;
+                                                                                if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                                                                                    var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                                                                                    elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                                                                                }
+                                                                                parent.appendChild(elem);
+                                                                            }
+                                                                        }
+                                                                        var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                                                                        var address = protocol + window.location.host + window.location.pathname + '/ws';
+                                                                        var socket = new WebSocket(address);
+                                                                        socket.onmessage = function (msg) {
+                                                                            if (msg.data == 'reload') window.location.reload();
+                                                                            else if (msg.data == 'refreshcss') refreshCSS();
+                                                                        };
+                                                                        if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                                                                            //console.log('Live reload enabled.');
+                                                                            sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                                                                        }
+                                                                    })();
+                                                                }
+                                                                else {
+                                                                    console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+                                                                }
+         // ]]>
+                                                            </script>
+                                                        </svg>
+                                                    </a></li>
+                                            </ul>
+                                            <p class="font-12">Showing {{(OrderPageDetail.currPageNo * OrderPageDetail.itemsPerPage) > OrderPageDetail.TotalItems ? OrderPageDetail.TotalItems : (OrderPageDetail.currPageNo * OrderPageDetail.itemsPerPage) }} 
+                                                items of {{OrderPageDetail.TotalItems}}</p>
+                                        </div>
+                                        <!-- End Pagination -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Product Grid -->
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+            </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Work Experience</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete Work Experience?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn long" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn long">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="deleteConfirmEducationModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel2">Delete School Experience</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete School Experience?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn long" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn long">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Contact Add New PopUp -->
+<div id="contactAddModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="#">
+
+                    <div class="media flex-column flex-sm-row">
+                        <div class="modal-upload-avatar mr-0 mr-sm-3 mr-md-5 mb-5 mb-sm-0">
+
+                            <div class="attach-file style--two mb-3">
+                                <img src="assets/images/img-placeholder.png" class="profile-avatar" alt="">
+                                <div class="upload-button">
+                                    <img src="assets/images/svg/gallery.svg" alt="" class="svg mr-2">
+                                    <span>Upload Photo</span>
+                                    <input class="file-input" type="file" id="fileUpload" accept="image/*">
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h4 class="mb-2">Upload a Photo</h4>
+                                <p class="font-12 c4">Allowed JPG, GIF or PNG. Max size <br /> of 800kB</p>
+                            </div>
+                        </div>
+
+
+                        <div class="contact-account-setting media-body">
+
+                            <h4 class="mb-4">Profile</h4>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_name">Name</label>
+                                <input type="text" id="as_name" class="theme-input-style" placeholder="Type Here"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_email">Email</label>
+                                <input type="email" id="as_email" class="theme-input-style" placeholder="Type Here"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_phone">Phone</label>
+                                <input type="number" id="as_phone" class="theme-input-style" placeholder="Type Here"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_role">Role</label>
+                                <input type="text" id="as_role" class="theme-input-style" placeholder="Type Here"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_address">Address</label>
+                                <input type="text" id="as_address" class="theme-input-style" placeholder="Type Here"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_city">City</label>
+                                <input type="text" id="as_city" class="theme-input-style" placeholder="Type Here"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_role">State</label>
+                                <div class="custom-select style--two">
+                                    <select class="theme-input-style" id="exampleSelect1">
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="TamilNadu">TamilNadu</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashta">Maharashta</option>
+                                        <option value="Haryana">Haryana</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_bio">Bio</label>
+                                <textarea id="as_bio" class="theme-input-style" placeholder="Type Here"
+                                    required></textarea>
+                            </div>
+
+                            <div class="">
+                                <a href="#" class="btn mr-4">Save Changes</a>
+                                <a href="#" class="cancel font-14 bold" data-dismiss="modal">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Modal Body -->
+        </div>
+    </div>
+</div>
+<!-- End Contact Add New PopUp -->
+
+<!-- Contact Edit PopUp -->
+<div id="contactEditModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="#" [formGroup]="profileForm">
+                    <div class="media flex-column flex-sm-row">
+                        <div class="modal-upload-avatar mr-0 mr-sm-3 mr-md-5 mb-5 mb-sm-0">
+
+                            <div class="attach-file style--two mb-3">
+                                <img [src]="userDetail.imagePath" class="profile-avatar" alt="">
+                                <div class="upload-button">
+                                    <img [src]="userDetail.imagePath" alt="" class="svg mr-2">
+                                    <span>Upload Photo</span>
+                                    <input class="file-input" type="file" accept="image/*" #imageInputtwo (change)="updateFile(imageInputtwo)">
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h4 class="mb-2">Upload a Photo</h4>
+                                <p class="font-12 c4">Allowed JPG, GIF or PNG. Max size <br /> of 800kB</p>
+                            </div>
+                        </div>
+
+
+                        <div class="contact-account-setting media-body">
+
+                            <h4 class="mb-4">Profile</h4>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_name">Name</label>
+                                <p *ngIf="profileFormControls.name!.errors?.required  && profileFormControls.name!.touched" class="error-msg">
+                                    Please enter customer name!!</p>
+                                <input type="text" id="as_name" class="theme-input-style" formControlName="name"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_email">Email</label>
+                                <p *ngIf="profileFormControls.email!.errors?.required  && profileFormControls.email!.touched" class="error-msg">
+                                    Please enter customer email!!</p>
+                                <input type="email" id="as_email" class="theme-input-style" formControlName="email"
+                                    disabled>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_phone">Phone</label>
+                                <p *ngIf="profileFormControls.mobileno!.errors?.required  && profileFormControls.mobileno!.touched" class="error-msg">
+                                    Please enter customer mobileno!!</p>
+                                <input type="number" id="as_phone" class="theme-input-style" formControlName="mobileno"
+                                    required>
+                            </div>
+
+                            <!-- <div class="mb-4">
+                                <label class="bold black mb-2" for="as_role">Role</label>
+                                <input type="text" id="as_role" class="theme-input-style"
+                                    required>
+                            </div> -->
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_address">Address</label>
+                                <p *ngIf="profileFormControls.address!.errors?.required  && profileFormControls.address!.touched" class="error-msg">
+                                    Please enter customer address!!</p>
+                                <input type="text" id="as_address" class="theme-input-style" formControlName="address"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_city">City</label>
+                                <p *ngIf="profileFormControls.city!.errors?.required  && profileFormControls.city!.touched" class="error-msg">
+                                    Please enter customer city!!</p>
+                                <input type="text" id="as_city" class="theme-input-style" formControlName="city"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_state">State</label>
+                                <p *ngIf="profileFormControls.state!.errors?.required  && profileFormControls.state!.touched" class="error-msg">
+                                    Please enter customer state!!</p>
+                                <div class="custom-select style--two">
+                                    <select class="theme-input-style" id="as_state" formControlName="state">
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="TamilNadu">TamilNadu</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashta">Maharashta</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Haryana">Haryana</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_zip">Pincode</label>
+                                <p *ngIf="profileFormControls.pinCode!.errors?.required  && profileFormControls.pinCode!.touched" class="error-msg">
+                                    Please enter customer pinCode!!</p>
+                                <input type="text" id="as_zip" class="theme-input-style" formControlName="pinCode"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="bold black mb-2" for="as_bio" >Bio</label>
+                                <p *ngIf="profileFormControls.desc!.errors?.required  && profileFormControls.desc!.touched" class="error-msg">
+                                    Please enter customer desc!!</p>
+                                <textarea id="as_bio" class="theme-input-style" formControlName="desc"
+                                    ></textarea>
+                            </div>
+
+                            <div class="">
+                                <a href="#" class="btn mr-4" (click)="onSubmit()">Save Changes</a>
+                                <a href="#" class="cancel font-14 bold" data-dismiss="modal" #closeBtn>Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Modal Body -->
+        </div>
+    </div>
+</div>
+<!-- End Contact Edit PopUp -->

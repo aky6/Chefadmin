@@ -1,0 +1,186 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-4 col-lg-4 col-sm-6">
+            <!-- Card -->
+            <div class="card mb-30">
+                <div class="statistics-bounce-rate d-flex align-items-center justify-content-between">
+                    <div class="state-content">
+                        <p class="font-14 mb-2">Order Delivered</p>
+                        <h3>{{orderDelivered | currency: 'INR'}}</h3>
+                    </div>
+                    <div class="state-icon">
+                        <img src="assets/images/png-icon/bar.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- End Card -->
+        </div>
+
+        <div class="col-xl-4 col-lg-4 col-sm-6">
+            <!-- Card -->
+            <div class="card mb-30">
+                <div class="statistics-bounce-rate order style--two d-flex align-items-center justify-content-between">
+                    <div class="state-content">
+                        <p class="font-14 mb-2">Order Cancelled</p>
+                        <h3>{{orderCancelled | currency: 'INR'}}</h3>
+                    </div>
+                    <div class="state-icon">
+                        <img src="assets/images/png-icon/badge.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- End Card -->
+        </div>
+
+        <div class="col-xl-4 col-lg-4 col-sm-6">
+            <!-- Card -->
+            <div class="card mb-30">
+                <div class="statistics-bounce-rate report d-flex align-items-center justify-content-between">
+                    <div class="state-content">
+                        <p class="font-14 mb-2">Total Revenue</p>
+                        <h3>{{vendorRevenue | currency: 'INR'}}</h3>
+                    </div>
+                    <div class="state-icon">
+                        <img src="assets/images/png-icon/report.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- End Card -->
+        </div>
+
+        <div class="col-xl-4 col-lg-6">
+            <!-- Card -->
+            <div class="card mb-30">
+                <div class="card-body">
+                    <div class="d-flex align-items-start align-items-sm-end justify-content-between mb-30">
+                        <div class="">
+                            <h4 class="mb-1">Last Month Sale</h4>
+                            <p class="font-14">50% increase in a average</p>
+                        </div>
+
+                        <div class="dropdown-button">
+                            <a href="#" class="d-flex align-items-center" data-toggle="dropdown">
+                                <div class="menu-icon style--two mr-0">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#">Daily</a>
+                                <a href="#">Sort By</a>
+                                <a href="#">Monthly</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="apex_line5-chart">
+                        <apx-chart [series]="lineOption.series" [chart]="lineOption.chart" [xaxis]="lineOption.xaxis"
+                            [stroke]="lineOption.stroke" [colors]="lineOption.colors" [markers]="lineOption.markers"
+                            [grid]="lineOption.grid" [yaxis]="lineOption.yaxis">
+                        </apx-chart>
+                    </div>
+                </div>
+            </div>
+            <!-- End Card -->
+        </div>
+
+        <div class="col-xl-8 col-lg-6">
+            <!-- Card -->
+            <div class="card mb-30">
+                <div class="card-body">
+                    <div class="d-flex align-items-start align-items-sm-end justify-content-between mb-3">
+                        <div class="">
+                            <h4 class="mb-1">Top Selling Products</h4>
+                            <p class="font-14"> Tell use paid law ever yet new. Meant to learn of vexed he there.</p>
+                        </div>
+
+                        <!-- <div class="dropdown-button">
+                            <a href="#" class="d-flex align-items-center" data-toggle="dropdown">
+                                <div class="menu-icon style--two mr-0">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#">Daily</a>
+                                <a href="#">Sort By</a>
+                                <a href="#">Monthly</a>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <!-- Product List -->
+                    <div class="product-list">
+                        <!-- Product List Item -->
+                        <div class="product-list-item mb-20 d-flex justify-content-between align-items-center"
+                            *ngFor="let item of topSellingData">
+                            <div class="d-flex align-items-center">
+                                <div class="img mr-3">
+                                    <img [src]="item.item?.imagePath ? item.item?.imagePath : 'assets/images/img-placeholder.png'"
+                                        alt="">
+                                </div>
+                                <div class="content">
+                                    <p class="black mb-1">{{item.itemname}}</p>
+                                    <span class="c3 bold font-14">{{item.price | currency: 'INR'}}</span>
+                                </div>
+                            </div>
+                            <p class="font-14">{{item.itemquantity}} Sales</p>
+                        </div>
+                        <!-- End Product List Item -->
+
+                        <!-- Product List Item -->
+                        <!-- <div class="product-list-item mb-20 d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <div class="img mr-3">
+                                    <img src="assets/images/product/product2.png" alt="">
+                                </div>
+                                <div class="content">
+                                    <p class="black mb-1">Fastrack Watches 2654</p>
+                                    <span class="c3 bold font-14">$245.65</span>
+                                </div>
+                            </div>
+                            <p class="font-14">26584 Selles</p>
+                        </div> -->
+                        <!-- End Product List Item -->
+
+                        <!-- Product List Item -->
+                        <!-- <div class="product-list-item mb-20 d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <div class="img mr-3">
+                                    <img src="assets/images/product/product3.png" alt="">
+                                </div>
+                                <div class="content">
+                                    <p class="black mb-1">Fastrack Watches 2654</p>
+                                    <span class="c3 bold font-14">$245.65</span>
+                                </div>
+                            </div>
+                            <p class="font-14">26584 Selles</p>
+                        </div> -->
+                        <!-- End Product List Item -->
+
+                        <!-- Product List Item -->
+                        <!-- <div class="product-list-item d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <div class="img mr-3">
+                                    <img src="assets/images/product/product4.png" alt="">
+                                </div>
+                                <div class="content">
+                                    <p class="black mb-1">Fastrack Watches 2654</p>
+                                    <span class="c3 bold font-14">$245.65</span>
+                                </div>
+                            </div>
+                            <p class="font-14">26584 Selles</p>
+                        </div> -->
+                        <!-- End Product List Item -->
+                    </div>
+                    <!-- End Product List -->
+                </div>
+            </div>
+            <!-- End Card -->
+        </div>
+        <!--./-->
+
+    </div>
+</div>

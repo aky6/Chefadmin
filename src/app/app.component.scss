@@ -1,0 +1,33 @@
+.dropdown-availability {
+  padding: 4px 16px;
+  clear: both;
+  font-weight: 400;
+  text-transform: capitalize;
+
+  .switch {
+    position: relative;
+  }
+
+  .control {
+    height: 18px;
+    width: 36px;
+    transform: translateY(-50%);
+    top: 50%;
+
+    &::after {
+      height: 22px;
+      width: 22px;
+      top: -3px;
+    }
+  }
+}
+
+.user-avatar {
+  &__img {
+    height: 70px;
+    width: 70px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+  }
+}

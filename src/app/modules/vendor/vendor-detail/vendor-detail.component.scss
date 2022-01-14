@@ -1,0 +1,65 @@
+.profile-pic {
+  margin-left: 0 !important;
+
+  &:hover {
+    &::after {
+      width: calc(100% - 30px);
+      height: 100%;
+      left: 15px;
+      top: 0;
+      position: absolute;
+      content: "";
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+    }
+  }
+
+  .upload-button {
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    right: 0;
+  }
+
+  .dp {
+    filter: brightness(0.9);
+    border-radius: 4px;
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+  }
+}
+
+.cover-img {
+  .cover-chef {
+    filter: brightness(0.9);
+    border-radius: 4px;
+  }
+}
+
+.profile-avatar {
+  object-fit: cover;
+}
+
+.btn-circle {
+  .material-icons {
+    color: #fff;
+    z-index: 1;
+    font-size: 1rem;
+  }
+}
+
+.product-img {
+  a {
+    height: 192px;
+    display: inline-block;
+
+    img {
+      height: inherit;
+      width: inherit;
+      object-fit: cover;
+      filter: brightness(0.9);
+      border-radius: 0.25rem;
+    }
+  }
+}

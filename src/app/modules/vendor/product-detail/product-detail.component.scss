@@ -1,0 +1,23 @@
+.pd-img-wrapp {
+  height: 415px;
+
+  img {
+    filter: brightness(0.9);
+    border-radius: 0.5rem;
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+  }
+}
+
+.product-time{
+  margin-top: 30px;
+  margin-bottom: 15px;
+  .list-heading{
+    margin-right: 10px;
+  }
+  .list-next-heading{
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+}

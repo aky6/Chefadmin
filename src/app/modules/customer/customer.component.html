@@ -1,0 +1,300 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <!-- Card -->
+            <div class="card bg-transparent">
+                <!-- Contact Header -->
+                <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                    <div class="contact-header-left media-body d-flex align-items-center mr-4">
+
+                        <!-- Search Form -->
+                        <form action="#" class="search-form flex-grow">
+                            <div class="theme-input-group style--two">
+                                <input type="text" class="theme-input-style" placeholder="Search Here">
+
+                                <button type="submit"><img src="assets/images/svg/search-icon.svg" alt=""
+                                        class="svg"></button>
+                            </div>
+                        </form>
+                        <!-- End Search Form -->
+                    </div>
+
+                    <div class="contact-header-right d-flex align-items-center justify-content-end mt-3 mt-sm-0">
+
+                        <!-- Delete Mail -->
+                        <div class="delete_mail">
+                            <a href="#"><img src="assets/images/svg/delete.svg" alt="" class="svg"></a>
+                        </div>
+                        <!-- End Delete Mail -->
+
+                        <!-- Pagination -->
+                        <div class="pagination style--two d-flex flex-column align-items-center ml-n2">
+                            <ul class="list-inline d-inline-flex align-items-center">
+                                <li><a href="#" (click)="loadPrevPage()">
+                                        <img src="assets/images/svg/left-angle.svg" alt="" class="svg">
+                                    </a></li>
+                                <li><a href="#" class="current" (click)="loadNextPage()">
+                                        <img src="assets/images/svg/right-angle.svg" alt="" class="svg">
+                                    </a></li>
+                            </ul>
+                        </div>
+                        <!-- End Pagination -->
+                    </div>
+                </div>
+                <!-- End Contact Header -->
+
+
+                <div class="table-responsive">
+                    <!-- User List Table -->
+                    <table class="contact-list-table text-nowrap bg-white">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+                                </th>
+                                <th class="text-center">Name <img src="assets/images/svg/table-down-arrow.svg" alt=""
+                                        class="svg"></th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Created Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of userList">
+                                <td>
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="img mr-20">
+                                            <img [src]="user.imagePath" class="img-40" alt="">
+                                        </div>
+                                        <div class="name bold">
+                                            <a routerLink="/customer/detail/{{user.userId}}">{{user.name}}</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.mobilenumber}}</td>
+                                <td>{{user.createdDt | date: 'MMMM dd, yyyy'}}</td>
+                                <td ><button type="button" class="details-btn" (click)="showDetails(user.userId)">Details <i
+                                            class="icofont-arrow-right"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- End User List Table -->
+                </div>
+            </div>
+            <!-- End Card -->
+
+            <!-- Contact Add New PopUp -->
+            <div id="contactAddModal" class="modal fade">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <!-- Modal Body -->
+                        <div class="modal-body">
+                            <form action="#">
+
+                                <div class="media flex-column flex-sm-row">
+                                    <div class="modal-upload-avatar mr-0 mr-sm-3 mr-md-5 mb-5 mb-sm-0">
+
+                                        <div class="attach-file style--two mb-3">
+                                            <img src="assets/images/img-placeholder.png" class="profile-avatar" alt="">
+                                            <div class="upload-button">
+                                                <img src="assets/images/svg/gallery.svg" alt="" class="svg mr-2">
+                                                <span>Upload Photo</span>
+                                                <input class="file-input" type="file" id="fileUpload" accept="image/*">
+                                            </div>
+                                        </div>
+
+                                        <div class="content">
+                                            <h4 class="mb-2">Upload a Photo</h4>
+                                            <p class="font-12 c4">Allowed JPG, GIF or PNG. Max size <br /> of 800kB</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="contact-account-setting media-body">
+
+                                        <h4 class="mb-4">Profile</h4>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_name">Name</label>
+                                            <input type="text" id="as_name" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_email">Email</label>
+                                            <input type="email" id="as_email" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_phone">Phone</label>
+                                            <input type="number" id="as_phone" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_role">Role</label>
+                                            <input type="text" id="as_role" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_address">Address</label>
+                                            <input type="text" id="as_address" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_city">City</label>
+                                            <input type="text" id="as_city" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_role">State</label>
+                                            <div class="custom-select style--two">
+                                                <select class="theme-input-style" id="exampleSelect1">
+                                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                    <option value="Delhi">Delhi</option>
+                                                    <option value="TamilNadu">TamilNadu</option>
+                                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                    <option value="Maharashta">Maharashta</option>
+                                                    <option value="Haryana">Haryana</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_bio">Bio</label>
+                                            <textarea id="as_bio" class="theme-input-style" placeholder="Type Here"
+                                                required></textarea>
+                                        </div>
+
+                                        <div class="">
+                                            <a href="#" class="btn mr-4">Save Changes</a>
+                                            <a href="#" class="cancel font-14 bold" data-dismiss="modal">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End Modal Body -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Contact Add New PopUp -->
+
+            <!-- Contact Edit PopUp -->
+            <div id="contactEditModal" class="modal fade">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <!-- Modal Body -->
+                        <div class="modal-body">
+                            <form action="#">
+                                <div class="media flex-column flex-sm-row">
+                                    <div class="modal-upload-avatar mr-0 mr-sm-3 mr-md-5 mb-5 mb-sm-0">
+
+                                        <div class="attach-file style--two mb-3">
+                                            <img src="assets/images/product/pg2.png" class="profile-avatar" alt="">
+                                            <div class="upload-button">
+                                                <img src="assets/images/svg/gallery.svg" alt="" class="svg mr-2">
+                                                <span>Upload Photo</span>
+                                                <input class="file-input" type="file" id="fileUpload2" accept="image/*">
+                                            </div>
+                                        </div>
+
+                                        <div class="content">
+                                            <h4 class="mb-2">Upload a Photo</h4>
+                                            <p class="font-12 c4">Allowed JPG, GIF or PNG. Max size <br /> of 800kB</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="contact-account-setting media-body">
+
+                                        <h4 class="mb-4">Profile</h4>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_name">Name</label>
+                                            <input type="text" id="as_name" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_email">Email</label>
+                                            <input type="email" id="as_email" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_phone">Phone</label>
+                                            <input type="number" id="as_phone" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_role">Role</label>
+                                            <input type="text" id="as_role" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_address">Address</label>
+                                            <input type="text" id="as_address" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_city">City</label>
+                                            <input type="text" id="as_city" class="theme-input-style"
+                                                placeholder="Type Here" required>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_role">State</label>
+                                            <div class="custom-select style--two">
+                                                <select class="theme-input-style" id="exampleSelect1">
+                                                    <option value="01">Jammu & Kashmir</option>
+                                                    <option value="02">Delhi</option>
+                                                    <option value="03">Haryana</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="bold black mb-2" for="as_bio">Bio</label>
+                                            <textarea id="as_bio" class="theme-input-style" placeholder="Type Here"
+                                                required></textarea>
+                                        </div>
+
+                                        <div class="">
+                                            <a href="#" class="btn mr-4">Save Changes</a>
+                                            <a href="#" class="cancel font-14 bold" data-dismiss="modal">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End Modal Body -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Contact Edit PopUp -->
+        </div>
+    </div>
+</div>

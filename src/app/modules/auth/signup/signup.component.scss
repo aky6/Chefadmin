@@ -1,0 +1,21 @@
+.signup {
+  .header {
+    &__logo {
+      padding: 0.5rem 7%;
+    }
+  }
+}
+
+.changeLocation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+
+  span {
+    height: 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+}

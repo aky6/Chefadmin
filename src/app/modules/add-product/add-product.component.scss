@@ -1,0 +1,57 @@
+.add-product__category {
+  height: 100% !important;
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  min-height: 60vh;
+
+  .form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    border: 2px dashed #8280fd;
+    border-radius: 0.25rem;
+  }
+
+  &__text {
+    color: #999;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .file-upload-button {
+    background-color: #ff5252;
+    border-radius: 50%;
+    height: 3rem;
+    overflow: hidden;
+    position: relative;
+    width: 3rem;
+    cursor: pointer;
+
+    &::after {
+      content: "⇪";
+      color: #fff;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    input[type="file"] {
+      font-size: 100px;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .file-info {
+    margin-top: 1rem;
+    color: #999;
+  }
+}

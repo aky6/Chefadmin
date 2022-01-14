@@ -1,0 +1,20 @@
+.product-img {
+  a {
+    height: 192px;
+    display: inline-block;
+
+    img {
+      height: inherit;
+      width: inherit;
+      object-fit: cover;
+      filter: brightness(0.9);
+      border-radius: 0.25rem;
+    }
+  }
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+

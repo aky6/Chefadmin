@@ -1,0 +1,98 @@
+<div class="container-fluid">
+    <!-- Card -->
+    <div class="card">
+        <div class="card-body">
+            <h4 class="pt-2 mb-4">Product Catalogue</h4>
+
+            <mat-tab-group>
+                <mat-tab label="Foods" >
+                    <!-- Product Grid -->
+                    <div class="product-grid pt-4">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let menu of foodMenus">
+                                <!-- Product Grid Item -->
+                                <div class="product-grid-item mb-30">
+                                    <div class="product-img mb-3">
+                                        <a href="javascript:void(0)" (click)="navigateToDetails(menu.id)">
+                                            <img [src]="menu.imgUrl ? menu.imgUrl : 'assets/images/product/pg2.png'"
+                                                class="w-100" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h6 class="mb-10">{{menu.price | currency: 'INR'}}</h6>
+                                        <a href="javascript:void(0)" (click)="navigateToDetails(menu.id)">
+                                            <p class="black">{{menu.description}}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- End Product Grid Item -->
+                            </div>
+
+                            <div class="col-xl-12">
+                                <!-- Pagination -->
+                                <div class="pagination d-flex flex-column align-items-center mb-10">
+                                    <ul class="list-inline d-inline-flex align-items-center mb-2">
+                                        <li><a (click)="prevPage('Food')">
+                                                <img src="assets/images/svg/left-angle.svg" alt="" class="svg">
+                                            </a></li>
+                                        <li class="current"><span class="current">1</span></li>
+                                        <li><a (click)="nextPage('Food')">
+                                                <img src="assets/images/svg/right-angle.svg" alt="" class="svg">
+                                            </a></li>
+                                    </ul>
+                                    <p class="font-12">Showing {{(foodPage.itemsPerPage * (foodPage.currPageNo - 1)) + foodMenus.length}} items of {{foodPage.TotalItems}}</p>
+                                </div>
+                                <!-- End Pagination -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Product Grid -->
+                </mat-tab>
+                <mat-tab label="Sugar & Spices" >
+                    <!-- Product Grid -->
+                    <div class="product-grid pt-4">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let menu of sugerAndSpicesMenus">
+                                <!-- Product Grid Item -->
+                                <div class="product-grid-item mb-30">
+                                    <div class="product-img mb-3">
+                                        <a href="javascript:void(0)" (click)="navigateToDetails(menu.id)">
+                                            <img [src]="menu.imgUrl ? menu.imgUrl : 'assets/images/product/pg2.png'"
+                                                class="w-100" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h6 class="mb-10">{{menu.price | currency: 'INR'}}</h6>
+                                        <a href="javascript:void(0)" (click)="navigateToDetails(menu.id)">
+                                            <p class="black">{{menu.description}}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- End Product Grid Item -->
+                            </div>
+
+                            <div class="col-xl-12">
+                                <!-- Pagination -->
+                                <div class="pagination d-flex flex-column align-items-center mb-10">
+                                    <ul class="list-inline d-inline-flex align-items-center mb-2">
+                                        <li><a (click)="prevPage('Sugar & Spices')">
+                                                <img src="assets/images/svg/left-angle.svg" alt="" class="svg">
+                                            </a></li>
+                                        <li class="current"><span class="current">1</span></li>
+                                        <li><a (click)="nextPage('Sugar & Spices')">
+                                                <img src="assets/images/svg/right-angle.svg" alt="" class="svg">
+                                            </a></li>
+                                    </ul>
+                                    <p class="font-12">Showing {{(sugarAndSpicePage.itemsPerPage * (sugarAndSpicePage.currPageNo - 1)) + sugerAndSpicesMenus.length}} items of {{sugarAndSpicePage.TotalItems}}</p>
+                                </div>
+                                <!-- End Pagination -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Product Grid -->
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+    <!-- End Card -->
+</div>

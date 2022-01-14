@@ -1,0 +1,336 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <!-- User Profile Image -->
+        <div class="user-profile-img">
+          <div class="cover-img">
+            <img src="assets/images/coverImageChef.jpg" class="w-100 cover-chef img-fluid" alt="">
+
+            <!-- Upload Photo -->
+            <div class="upload-button">
+              <img src="assets/images/svg/gallery.svg" alt="" class="svg mr-2">
+              <span>Upload Photo</span>
+              <input class="file-input" type="file" id="fileUpload3" accept="image/*">
+            </div>
+            <!-- End Upload Photo -->
+          </div>
+        </div>
+        <!-- End User Profile Image -->
+      </div>
+      <div class="mx-2 mx-lg-4 mx-xl-5">
+        <div class="card mt-1">
+          <!-- User Profile Nav -->
+          <div class="user-profile-nav d-flex justify-content-xl-between align-items-xl-center flex-column flex-xl-row">
+            <!-- Profile Info -->
+            <div class="profile-info d-flex align-items-center">
+              <div class="profile-pic mr-3 container">
+                <img [src]="profile && profile.imagePath ? profile.imagePath : 'assets/images/media/profile-pic.jpg'"
+                  alt="" class="dp img-responsive">
+
+                <!-- Upload Photo -->
+                <div class="upload-button">
+                  <img src="assets/images/svg/gallery.svg" alt="" class="svg mr-2">
+                  <span>Upload Photo</span>
+                  <input class="file-input" type="file" accept="image/*" #imageInputOne
+                    (change)="updateProfile(imageInputOne)">
+                </div>
+                <!-- End Upload Photo -->
+              </div>
+
+              <div>
+                <h3>{{profile && profile.firstname ? profile.firstname : ''}}</h3>
+                <p class="font-14">{{profile && profile.roles && profile.roles === 'vendor' ? 'Partner'
+                  : 'Partner'}}</p>
+              </div>
+            </div>
+            <!-- End Profile Info -->
+
+            <div class="d-flex align-items-center mt-3 mt-xl-0">
+              <ul class="nav profile-nav-tabs">
+                <li>
+                  <a class="p_nav-link has-before" href="javascript:void(0)" (click)="toggleAbout()"
+                    [ngClass]="{'active': displayAbout}">About</a>
+                </li>
+                <li>
+                  <a class="p_nav-link" href="javascript:void(0)" (click)="toggleMenu()"
+                    [ngClass]="{'active': displayMenu}">Menu</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <!-- End User Profile Nav -->
+        </div>
+
+        <div class="mt-30" *ngIf="displayAbout">
+          <!-- Profile Completion -->
+          <div class="profile-completion d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+              <!-- Progress -->
+              <div class="progress_22 mr-3">
+                <div class="ProgressBar-wrap2 position-relative">
+                  <!-- You can now use it in app.component.html -->
+                  <circle-progress [percent]="85" [radius]="100" [subtitle]="'85%'">
+                  </circle-progress>
+                </div>
+              </div>
+              <!-- End Progress -->
+
+              <div class="">
+                <h4 class="c2 mb-1">Profile Completion</h4>
+                <p class="font-14">Please complete your profile for get better reach!</p>
+              </div>
+            </div>
+
+            <!-- Edit Profile Button -->
+            <div class="edit-profile-btn pr-1">
+              <a class="btn-circle" data-toggle="modal" data-target="#contactEditModal" href="javascript:void(0)"
+                (click)="editVendor()">
+                <i class="material-icons">edit</i>
+              </a>
+            </div>
+            <!-- End Edit Profile Button -->
+          </div>
+          <!-- End Profile Completion -->
+
+          <!-- Card -->
+          <div class="card">
+            <div class="p-30">
+              <div class="about-myself mt-2 pb-2">
+                <h4 class="mb-3">About {{profile && profile.firstname ? profile.firstname : '' |
+                  titlecase}}</h4>
+                <p>{{profile && profile.user_desc ? profile.user_desc : ''}}</p>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6">
+                  <!-- Personal Info -->
+                  <div class="personal-info"><br>
+                    <h4 class="mb-3">Personal Information</h4>
+
+                    <ul class="info-list list-unstyled">
+                      <li><span>Name</span> {{profile && profile.firstname ? profile.firstname :
+                        '' | titlecase}}</li>
+                      <li><span>Role</span> {{profile && profile.roles ? profile.roles : '' |
+                        titlecase}}</li>
+                      <li><span>Email</span> {{profile && profile.email_Id ? profile.email_Id :
+                        ''}}</li>
+                      <li><span>Mobile</span> {{profile && profile.mobileNumber ?
+                        profile.mobileNumber : ''}}</li>
+                        <li><span>Flat Address</span> {{profile && profile.flatAddress ? profile.flatAddress :
+                          ''}}</li>
+                      <li><span>Address</span> {{profile && profile.Address ? profile.Address :
+                        ''}}</li>
+                      <li><span>City</span> {{profile && profile.city ? profile.city : ''}}</li>
+                      <li><span>State</span> {{profile && profile.state ? profile.state : ''}}
+                      </li>
+                      <li><span>Zip</span> {{profile && profile.zip ? profile.zip : ''}}</li>
+                    </ul>
+                  </div>
+                  <!-- End Personal Info -->
+                </div>
+                <!--./-->
+                <div class="col-md-6">
+                  <div class="mapBox">
+                    <iframe #embedMap src="" width="100%" height="350" frameborder="0" style="border:0;"
+                      allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                  </div>
+                </div>
+                <!--./-->
+              </div>
+              <!--row-->
+            </div>
+          </div>
+          <!-- End Card -->
+        </div>
+
+        <div class="mt-30" *ngIf="displayMenu">
+          <!-- Profile Completion -->
+          <div class="profile-completion d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+
+              <div class="">
+                <h4 class="c2 mb-1">Menu</h4>
+                <p class="font-14">Total Items: {{menus.length}}</p>
+              </div>
+            </div>
+
+            <!-- Edit Profile Button -->
+            <div class="main-header-btn ml-md-1 btn-type1">
+              <a href="javascript:void(0)" class="btn" routerLink="/add-product/{{vendorId}}">Add Item</a>
+            </div>
+            <!-- End Edit Profile Button -->
+          </div>
+          <!-- End Profile Completion -->
+
+          <!-- Card -->
+          <div class="card">
+            <div class="card-body">
+              <h4 class="pt-2 mb-4">Product Catelog</h4>
+
+              <!-- Product Grid -->
+              <div class="product-grid pt-2">
+                <div class="row">
+                  <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let menu of menus">
+                    <!-- Product Grid Item -->
+                    <div class="product-grid-item mb-30">
+                      <div class="product-img mb-3">
+                        <a href="javascript:void(0)" (click)="navigateToDetails(menu.id)">
+                          <img [src]="menu.imgUrl ? menu.imgUrl : 'assets/images/product/pg2.png'" class="w-100" alt="">
+                        </a>
+                      </div>
+                      <div class="product-content">
+                        <h6 class="mb-10">{{menu.price | currency : 'INR'}}</h6>
+                        <a href="javascript:void(0)" (click)="navigateToDetails(menu.id)">
+                          <p class="black">{{menu.itemname | titlecase}}</p>
+                        </a>
+                      </div>
+                    </div>
+                    <!-- End Product Grid Item -->
+                  </div>
+
+                  <div class="col-xl-12">
+                    <!-- Pagination -->
+                    <div class="pagination d-flex flex-column align-items-center mb-10">
+                      <ul class="list-inline d-inline-flex align-items-center mb-2">
+                        <li><a href="javascript:void(0)" (click)="loadPrevPage()">
+                            <img src="assets/images/svg/left-angle.svg" alt="" class="svg">
+                          </a></li>
+                        <li class="current"><span class="current">{{menuPageDetail.currPageNo}}</span></li>
+                        <li><a href="javascript:void(0)" (click)="loadNextPage()">
+                            <img src="assets/images/svg/right-angle.svg" alt="" class="svg">
+                          </a></li>
+                      </ul>
+                      <p class="font-12">Showing {{(menuPageDetail.currPageNo *
+                        menuPageDetail.itemsPerPage) > menuPageDetail.TotalItems ?
+                        menuPageDetail.TotalItems : (menuPageDetail.currPageNo *
+                        menuPageDetail.itemsPerPage) }}
+                        items of {{menuPageDetail.TotalItems}}</p>
+                    </div>
+                    <!-- End Pagination -->
+                  </div>
+                </div>
+              </div>
+              <!-- End Product Grid -->
+            </div>
+          </div>
+          <!-- End Card -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Contact Edit PopUp -->
+<div id="contactEditModal" class="modal fade">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form [formGroup]="form">
+          <div class="media flex-column flex-sm-row">
+            <div class="modal-upload-avatar mr-0 mr-sm-3 mr-md-5 mb-5 mb-sm-0">
+
+              <div class="attach-file style--two mb-3">
+                <img [src]="vendorImgUrl" class="profile-avatar" alt="">
+                <div class="upload-button">
+                  <img src="assets/images/svg/gallery.svg" alt="" class="svg mr-2">
+                  <span>Upload Photo</span>
+                  <input class="file-input" type="file" id="fileUpload2" accept="image/*" #imageInput
+                    (change)="uploadFile(imageInput)">
+                </div>
+              </div>
+
+              <div class="content">
+                <h4 class="mb-2">Upload a Photo</h4>
+                <p class="font-12 c4">Allowed JPG, GIF or PNG. Max size <br /> of 800kB</p>
+              </div>
+            </div>
+
+
+            <div class="contact-account-setting media-body">
+
+              <h4 class="mb-4">Profile</h4>
+
+              <div class="mb-4">
+                <label class="bold black mb-2" for="as_name">Full Name</label>
+                <input type="text" id="as_fname" class="theme-input-style" placeholder="Type Here" required
+                  formControlName="firstname">
+              </div>
+
+              <div class="mb-4">
+                <label class="bold black mb-2" for="as_email">Email</label>
+                <input type="email" id="as_email" class="theme-input-style" placeholder="Type Here" required
+                  formControlName="email">
+              </div>
+
+              <div class="mb-4">
+                <label class="bold black mb-2" for="as_phone">Phone</label>
+                <input type="number" id="as_phone" class="theme-input-style" placeholder="Type Here" required
+                  formControlName="mobileNumber">
+              </div>
+
+              <div class="mb-4">
+                <label class="bold black mb-2" for="as_flatAddress">Flat Address</label>
+                <input type="text" id="as_flatAddress" class="theme-input-style" #flatAddress
+                  placeholder="Enter Door/Flat No Block etc..." formControlName="flatAddress" required>
+              </div>
+
+              <div class="mb-4">
+                <label class="bold black mb-2" for="as_address">Address</label>
+                <input type="text" id="as_address" class="theme-input-style" #deliveryLocation
+                  placeholder="Enter street name, area etc..." formControlName="Address" required>
+              </div>
+
+              <div class="mb-4">
+                <label class="bold black mb-2" for="as_city">City</label>
+                <input type="text" id="as_city" class="theme-input-style" placeholder="Type Here" required
+                  formControlName="city">
+              </div>
+
+              <div class="mb-4">
+                <label class="bold black mb-2" for="as_role">State</label>
+                <div class="custom-select style--two">
+                  <select class="theme-input-style" id="exampleSelect1" formControlName="state">
+                    <option [value]="state" *ngFor="let state of allStates">{{state}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="bold black mb-2" for="as_name">zip</label>
+                <input type="text" id="as_lname" class="theme-input-style" placeholder="Type Here" required
+                  formControlName="zip">
+              </div>
+
+              <div class="mb-4">
+                <label class="bold black mb-2" for="as_bio">Bio</label>
+                <textarea id="as_bio" class="theme-input-style" placeholder="Type Here" required
+                  formControlName="user_desc"></textarea>
+              </div>
+
+              <div class="mb-4">
+                <!-- Form Group -->
+                <div class="form-group mb-20 changeLocation">
+                  <span><a href="javascript:void(0)" title="Change Location" (click)="getCurrentLocation()">Get current
+                      location</a></span>
+                </div>
+                <!-- End Form Group -->
+              </div>
+
+              <div class="">
+                <a href="javascript:void(0)" class="btn mr-4" (click)="updateVendor()">Save Changes</a>
+                <a href="javascript:void(0)" class="cancel font-14 bold" data-dismiss="modal" #closeModal>Cancel</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- End Modal Body -->
+    </div>
+  </div>
+</div>
+<!-- End Contact Edit PopUp -->

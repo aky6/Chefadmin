@@ -1,0 +1,69 @@
+<div class="mn-vh-100 d-flex align-items-center">
+    <div class="container">
+        <!-- Card -->
+        <div class="card justify-content-center auth-card">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-9">
+                    <h4 class="mb-5 font-20">Welcome To Homemade</h4>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <!-- Form Group -->
+                        <div class="form-group mb-20">
+                            <label for="email" class="mb-2 font-14 bold black">Email Address</label>
+                            <p *ngIf="formControl.email!.errors  && formControl.email!.touched" class="error-msg">Please
+                                enter valid email!!</p>
+                            <input type="email" id="email" class="theme-input-style" placeholder="Email Address"
+                                formControlName="email">
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="form-group mb-20">
+                            <label for="password" class="mb-2 font-14 bold black">Password</label>
+                            <p *ngIf="formControl.password!.errors?.required  && formControl.password!.touched"
+                                class="error-msg">Please enter your password!!</p>
+                            <input type="password" id="password" class="theme-input-style" placeholder="********"
+                                formControlName="password">
+                        </div>
+                        <!-- End Form Group -->
+
+                        <div class="d-flex justify-content-between mb-20">
+                            <div class="d-flex align-items-center">
+                                <!-- Custom Checkbox -->
+                                <label class="custom-checkbox position-relative mr-2">
+                                    <input type="checkbox" id="checkbox" formControlName="rememberMe">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <!-- End Custom Checkbox -->
+
+                                <label for="checkbox" class="font-14">Remember Me</label>
+                            </div>
+
+                            <a href="javascript:void(0)" class="font-12 text_color" routerLink="/auth/forget">Forgot
+                                Password?</a>
+                        </div>
+
+                        <div class="mb-30">
+                            <a href="#" class="light-btn mr-3 mb-20">Log In With Facebook</a>
+                            <a href="#" class="light-btn style--two mb-20">Log In With Gmail</a>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <button type="submit" class="btn long mr-20">Log In</button>
+                            <span class="font-12 d-block"><a href="javascript:void(0)" class="bold"
+                                    routerLink="/auth/signup">Sign Up</a>,If you
+                                have no account.</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Card -->
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer style--two">
+    Homemade © 2021 created by <a href="https://www.themelooks.com/"> Theme Looks</a>
+</footer>
+<!-- End Footer -->
