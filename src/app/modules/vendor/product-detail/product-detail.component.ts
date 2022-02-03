@@ -21,7 +21,8 @@ export class ProductDetailComponent implements OnInit {
   product: any;
   subcategories: string;
   isvendor: boolean;
-  subcat: string[]
+  subcat: string[];
+  images: [{}];
 
   constructor(
     private router: Router,
@@ -40,6 +41,7 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.productId = params.get('id');
+      console.log("this.productId", this.productId);
       this.getItemDetail(this.productId);
     });
     this.isvendor = true;
@@ -50,12 +52,16 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getItemDetail(id) {
+    this.getSubCategory(id);
+    console.log("id", id)
     this.vendorService.getItemByID(id).subscribe(
       (result: any) => {
-        console.log("subcategories", result)
-        this.product = result;
-        this.product.ingredients = JSON.parse(result.ingredients);
-        result.subcategories.forEach(element => {
+        console.log("getItemDetail", result)
+        this.product = result.s;
+        this.product.photo = this.images
+        // console.log("images", this.product);
+        this.product.ingredients = JSON.parse(result.s.ingredients);
+        result.s.subcategories.forEach(element => {
           console.log(element)
           this.subcat.push(element['subcategoryName'])
           // this.subcat.push(element[])
@@ -66,7 +72,20 @@ export class ProductDetailComponent implements OnInit {
         console.log(err);
       }
     );
-    this.getSubCategory(id);
+    this.vendorService.getItemimageByID(id).subscribe((data) => {
+      console.log("data", data)
+      // console.log("data", data.length)
+      // this.images = data
+      this.images.push(data)
+      console.log("this.image", this.images)
+      // data.map((e) => {
+      //   console.log("e", e)
+      //   this.images.push(e)
+      // })
+      // console.log("this.image", this.images)
+
+    })
+
   }
 
   getSubCategory(id) {

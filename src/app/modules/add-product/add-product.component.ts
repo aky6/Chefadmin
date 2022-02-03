@@ -3,6 +3,11 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { handleError } from '../shared/helpers/error-handler';
 import { AccountService } from '../shared/services/account.service';
 import { ComponentService } from '../shared/services/component.service';
@@ -33,18 +38,21 @@ export class AddProductComponent implements OnInit {
   sugarSubCategories: string[];
   cat: any;
   subcat: any;
+  copySubcat: any;
 
   constructor(
     private componentService: ComponentService,
+    private http: HttpClient,
     private fb: FormBuilder,
     private toasterService: ToastrService,
     private vendorService: VendorService,
     private accountService: AccountService,
+
     private route: ActivatedRoute,
     private router: Router
   ) {
     this.form = this.fb.group({
-      itemname: ['', [Validators.required]],
+
       desc: ['', [Validators.required]],
       ingredients: [''],
       isVeg: ['', [Validators.required]],
@@ -126,6 +134,7 @@ export class AddProductComponent implements OnInit {
     })
   }
   addcustomization() {
+    this.subcat = this.copySubcat
     this.customization().push(this.newcustomization())
   }
   removecustomization(i: number) {
@@ -144,6 +153,7 @@ export class AddProductComponent implements OnInit {
     this.accountService.getsubcategory().subscribe((e) => {
       console.log("e of sub cat", e)
       this.subcat = e
+      this.copySubcat = this.subcat
     })
   }
 
@@ -152,38 +162,58 @@ export class AddProductComponent implements OnInit {
     let p = [];
     const file: File = imageInput.files;
     console.log("file", file)
+
     let l = imageInput.files.length
+    if (l < 3) {
+      this.toasterService.info('Please upload the 3 images', 'Message!');
+      return
+    }
     console.log("l", l);
     // const reader = new FileReader();
     for (let i = 0; i < l; i++) {
+      let ac = this.accountService
       let reader = new FileReader();
       var promise = pFileReader(file[i])
-      promise.then(function (result) {
-        console.log(result)
-        p.push(file[i])
-        console.log("p", p)
+      this.imageUrl = promise
+      promise.then((result) => {
+
+        ac.uploadtocloud((result)).subscribe((res) => {
+          console.log("res", res);
+          p.push(res["secure_url"])
+          console.log("p", p)
+          if (i == l - 1) {
+            this.form.patchValue({
+              image: p
+            })
+            console.log("this.form", this.form.value);
+          }
+        })
+
+
+        // p.push(file[i])
+
       })
-      let pro = reader.addEventListener('load', (event: any) => {
-        this.selectedFile = new ImageSnippet(event.target.result, file[i]);
-        this.imageUrl = this.selectedFile.src.toString();
-        console.log("this.selectedFile.file[i]", this.selectedFile);
+
+      // let pro = reader.addEventListener('load', (event: any) => {
+      //   // this.selectedFile = new ImageSnippet(event.target.result, file[i]);
+      //   this.imageUrl = this.selectedFile.src.toString();
+      //   console.log("this.selectedFile.file[i]", this.selectedFile);
 
 
-        // this.form.patchValue({
-        //   image: this.selectedFile.file,
-        // });
-      });
+      //   // this.form.patchValue({
+      //   //   image: this.selectedFile.file,
+      //   // });
+      // });
 
 
 
 
     }
 
-    this.form.patchValue({
-      image: p
-    })
-    console.log(p)
-    console.log(this.form)
+
+
+    console.log("p", p)
+    // /console.log(this.form)
 
 
     function pFileReader(file) {
@@ -224,15 +254,22 @@ export class AddProductComponent implements OnInit {
 
   // To create a new product
   submitForm() {
-    console.log("productform vale", (this.form.value))
+    // console.log("productform vale", (this.form.value))
+    let pd = []
+    pd.push(JSON.stringify(this.form.value.category))
+    console.log("p", pd);
+    if (!this.form.value.image) {
+      this.toasterService.info('Please upload the image', 'Message!');
+      return;
+    }
     if (this.form.invalid) {
       this.toasterService.info(
         'Please enter all the required details',
         'Message!'
       );
     } else {
-      if (!this.form.value.image) {
-        this.toasterService.info('Please upload the image', 'Message!');
+      if (this.form.value.image.length < 3) {
+        this.toasterService.info('Please upload the minimum 3 images', 'Message!');
         return;
       }
       let vendorId = '';
@@ -247,6 +284,7 @@ export class AddProductComponent implements OnInit {
       payload['vendorId'] = vendorId;
       payload.availableFrom = this.form.controls.availableFrom.value;
       payload.availableTill = this.form.controls.availableTill.value;
+      payload.cat = pd
       // p.map((e) => {
       //   let i = 0
       //   payload.i = e
@@ -331,12 +369,20 @@ export class AddProductComponent implements OnInit {
 
   // To handle subcategory updation upon selecting category
   onCategorySelection() {
-    if (this.form.value.category === 'Food') {
-      this.subCategories = [...this.foodSubCategories];
-    } else if (this.form.value.category === 'Sugar & Spices') {
-      this.subCategories = [...this.sugarSubCategories];
+    console.log("form value", this.form.value.category.Id);
+    let categoryId = this.form.value.category.Id
+    let filtersubcat = [];
+    this.subcat.map((e) => {
+      if (e.categoryId == categoryId) {
+        filtersubcat.push(e)
+      }
+    })
+    console.log("filtersubcat", filtersubcat);
+    if (filtersubcat.length > 0) {
+      this.subcat = filtersubcat
     } else {
-      this.subCategories = [...this.foodSubCategories];
+      this.subcat = this.copySubcat
     }
+    console.log("this.subcat", this.subcat);
   }
 }

@@ -4,11 +4,10 @@
     <!-- Product Details -->
     <div class="product-details">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4" *ngFor="let im of images">
           <div class="pd-img-wrapp position-relative mb-5 mb-lg-0 container">
 
-            <img id="img_01" [src]="product.imagePath ? product.imagePath: 'assets/images/img-placeholder.png'"
-              class="img-responsive" data-zoom-image="assets/images/product/product-details-large.jpg" alt="" />
+            <img src={{im.imagePath}} class="img-responsive" alt="" />
 
           </div>
         </div>
@@ -18,7 +17,7 @@
           <div class="product-details-content position-relative">
             <div class="details">
               <!-- Product Title -->
-              <h4 class="product_title">{{product.itemname}}</h4>
+              <h4 class="product_title">{{product.category}}</h4>
               <!-- End Product Title -->
               <div class="approve">
                 <span class="contact-edit" data-toggle="modal" data-target="#contactEditModal">

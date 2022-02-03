@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of, Subject, throwError } from 'rxjs';
@@ -124,6 +124,9 @@ export class AccountService {
   getcategory() {
     return this.http.get(`${environment.apiUrl}/allcategory`);
   }
+  getcategorywithsubcategory() {
+    return this.http.get(`${environment.apiUrl}/categorywithsubcategory`);
+  }
   getsubcategory() {
     return this.http.get(`${environment.apiUrl}/allsubcategory`);
   }
@@ -145,5 +148,28 @@ export class AccountService {
     }
     this.toastr.error(errorMsg, 'Error');
     return throwError(errorMsg);
+  }
+  uploadtocloud(result) {
+    let data = new FormData()
+    let base64S = result
+    console.log("base64S", base64S)
+    data.append('file', `${base64S}`)
+    data.append('upload_preset', "gafvc2am");
+    // data.append("cloud_name", "scankar")
+    data.append("api_key", "516923571449371");
+    // data.append("resource_type", "image");
+    console.log("data", data)
+
+
+
+    const options = new HttpHeaders({
+      'Content-Type': 'multipart/form-data'
+
+
+
+    });
+    let response = this.http.post('https://api.cloudinary.com/v1_1/scankar/auto/upload', data);
+    console.log("response of upload", response)
+    return response;
   }
 }

@@ -5,8 +5,10 @@ import { MenuRoutingModule } from './menu-routing.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MenuComponent } from './menu.component';
 
+
+
 @NgModule({
   declarations: [MenuComponent],
-  imports: [CommonModule, MenuRoutingModule,MatTabsModule],
+  imports: [CommonModule, MenuRoutingModule, MatTabsModule],
 })
-export class MenuModule {}
+export class MenuModule { }

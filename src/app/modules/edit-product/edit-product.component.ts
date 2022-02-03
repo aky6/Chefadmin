@@ -42,7 +42,7 @@ export class EditProductComponent implements OnInit {
     private _location: Location
   ) {
     this.form = this.fb.group({
-      itemname: ['', [Validators.required]],
+      itemname: ['',],
       desc: ['', [Validators.required]],
       ingredients: ['', [Validators.required]],
       isVeg: ['', [Validators.required]],

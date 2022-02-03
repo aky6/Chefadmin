@@ -50,8 +50,14 @@ export class VendorService {
       if (key === 'subCategory') {
         value.forEach((val, index) => {
           console.log("val", val)
-          formData.append(`subcategoryName[${index}]`, val);
+          formData.append(`subcategoryName[${index}]`, JSON.stringify((val)));
         });
+      } else if (key === 'customization') {
+        // console.log('key : ' + key + ' value : ' + value);
+        value.forEach((val, index) => {
+          formData.append(`customization[${index}]`, JSON.stringify((val)))
+        });
+        // formData.append(key, value);
       } else if (key === 'customization') {
         // console.log('key : ' + key + ' value : ' + value);
         value.forEach((val, index) => {
@@ -66,7 +72,7 @@ export class VendorService {
     }
     console.log("formdata", formData)
     const options = new HttpHeaders({ 'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>' });
-    return this.http.post(`${environment.apiUrl}/additem`, formData, { headers: options });
+    return this.http.post(`${environment.apiUrl}/additem`, formData);
   }
 
   updateItem(payload: any) {
@@ -85,12 +91,18 @@ export class VendorService {
           formData.append(`customization[${index}]`, JSON.stringify((val)))
         });
         // formData.append(key, value);
+      } else if (key === 'cat') {
+        console.log('key : ' + key + ' value : ' + value);
+        value.forEach((val, index) => {
+          formData.append(`category[${index}]`, JSON.stringify((val)))
+        });
+        // formData.append(key, value);
       }
       else {
         formData.append(key, value);
       }
     }
-
+    console.log("formdata of updateitem", formData)
     return this.http.put(`${environment.apiUrl}/updateitem`, formData);
   }
 
@@ -143,6 +155,9 @@ export class VendorService {
   // To get the food item based on its id
   getItemByID(id) {
     return this.http.get(`${environment.apiUrl}/itemdetails/${id}`);
+  }
+  getItemimageByID(id) {
+    return this.http.get(`${environment.apiUrl}/itemimage/${id}`);
   }
 
   // To get the sub category for an item
